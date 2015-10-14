@@ -53,7 +53,7 @@ Analyzes audio stream from Thread-2 and runs algorithm that determines whether o
                  ...      ....  .. ...                      . ..      ..
                  ..        ...  ...                         .. ..    . ...
                 .....     ......... ..                          .    ..
-*Note: in this drawing, signal amplitude is the Y-axis, time is the X-axis.*
+*Note: in this drawing, signal frequency is the Y-axis, time is the X-axis.*
 
 #### Possible algorithm #3
 Use both, each as their own thread, catalog each `clip` in a clip database with the findings of these analysis threads.
