@@ -37,10 +37,11 @@ Handles audio input stream from the microphone.
 Analyzes audio stream from Thread-1 and runs algorithm that determines whether or not a given period of the audio stream can be 'clipped' and saved as a `.wav` file. This algorithm operates a sliding window with the following pseudo routine.
 
                |snd-a  |   sound-b       |  no-sound      | snd-c | snd-d  |
-     ^                     ..       .                       
- Amplitude        ..      ....  .. ...                      . ..      ..
+                           ..       .                       
+                  ..      ....  .. ...                      . ..      ..
                  ....    ................                   ......    .....
-    time >   .................................................................
+             .................................................................
+*Note: in this drawing, signal amplitude is the Y-axis, time is the X-axis.*
 
 Thread-2's job is to analyze the input audio stream and make a determination on whether or not a given period of time should be identified as a separate sound based on whether or not it was quiet, then loud, then quiet again. This algorithm might work well for airplanes, but maybe not so much on sounds with lower amplitudes and more interesting frequency characteristics.
 
@@ -48,10 +49,11 @@ Thread-2's job is to analyze the input audio stream and make a determination on 
 Analyzes audio stream from Thread-2 and runs algorithm that determines whether or not a given period of of the input audio stream can be clipped and saved as a `.wav` file
 
                |snd-a  |   sound-b       |  no-sound      | snd-c | snd-d  |
-     ^            .        ..       .                        .
- Frequency       ...      ....  .. ...                      . ..      ..
+                  .        ..       .                        .
+                 ...      ....  .. ...                      . ..      ..
                  ..        ...  ...                         .. ..    . ...
-    time >      .....     ......... ..                          .    ..
+                .....     ......... ..                          .    ..
+*Note: in this drawing, signal amplitude is the Y-axis, time is the X-axis.*
 
 #### Possible algorithm #3
 Use both, each as their own thread, catalog each `clip` in a clip database with the findings of these analysis threads.
