@@ -24,8 +24,11 @@ To accomplish all of this, I see the `soundscout` Python application taking on a
         > Thread-4
 ```
 
-## Proc-1
-Two threads that are responsible for recording and doing real-time edits on audio.
+## /usr/bin/ss
+Just the name of the binary running `soundscout`.
+
+## Main-Thread
+Not much important stuff here. Probably just logging setups and object instantiations. Interthread messaging systems can be devised at this level as well.
 
 ### Thread-1
 Handles audio input stream from the microphone.
