@@ -2,6 +2,7 @@
 
 import pyonep, json
 from flask import Flask, render_template
+from datetime import datetime
 
 app = Flask(__name__)
 app.debug = True
@@ -20,20 +21,27 @@ def main():
 	for rid in aliases:
 		r = _1P.read(AUTH_SSMaster, rid, {'limit': NUM_DATAPOINTS}, defer=True)
 	result = _1P.send_deferred(AUTH_SSMaster)
-	for r in result:
-		print(r)
 	
 	data_rows = {}
 	data_list = ''
 	for rid in aliases:
 		for r in result:
-			# print(r)
 			if r[0]['procedure'] == 'read' and\
 				r[0]['arguments'][0] == rid:
 				print("will", r[2])
 				data_rows[ aliases[rid][0] ] = [ r[2][d] for d in range(0, NUM_DATAPOINTS) ]
-				#data_list+='<li>{0} - {1}</li>'.format(aliases[rid], r[2])
 	return render_template('main.html', data_rows=data_rows)
 
+@app.template_filter('dtime')
+def dtime(ts):
+	return datetime.fromtimestamp( int(ts) ).strftime("%H:%M:%S-%Y/%m/%d")
+
+@app.template_filter('unjson')
+def unjson(blob):
+	print(blob)
+	return """
+Loudness:      {0} db SPL
+Airplane-ness: {1} %
+""".format(json.loads(blob)['amplitude'], int(json.loads(blob)['airplane_ness']*100000)  )
 if __name__ == "__main__":
-	app.run()
+	app.run(host = '0.0.0.0' if not app.debug else '127.0.0.1')

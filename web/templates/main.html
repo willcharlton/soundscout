@@ -1,0 +1,44 @@
+<!doctype html>
+
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<script href="/static/js/moment.js"></script>
+<html lang="en">
+<head meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Soundscout </title>
+<body>
+<div class="container-fluid">
+	<table class="table">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width", initial-scale=1">
+	<thead> <tr class="info"><th>Device</th><th>N</th><th>N-1</th><th>N-2</th><th>N-3</th><th>N-4</th></thead>
+	{% for row in data_rows %}
+	
+	<tr class="success">
+		<td>{{ row    		 }}</td>
+		<td>	{{ data_rows[row][0][0] | dtime }}
+			</br>
+			{{ data_rows[row][0][1] | unjson }}
+		</td>
+		<td>	{{ data_rows[row][1][0] | dtime }}
+			</br>
+			{{ data_rows[row][1][1] | unjson }}
+		</td>
+		<td>	{{ data_rows[row][2][0] | dtime }}
+			</br>
+			{{ data_rows[row][2][1] | unjson }}
+		</td>
+		<td>	{{ data_rows[row][3][0] | dtime }}
+			</br>
+			{{ data_rows[row][3][1] | unjson }}
+		</td>
+		<td>	{{ data_rows[row][4][0] | dtime }}
+			</br>
+			{{ data_rows[row][4][1] | unjson }}
+		</td>
+	</tr>
+
+	{% endfor %}
+	</table>
+</div>
+</body>
+</html>
