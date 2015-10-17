@@ -1,3 +1,15 @@
+adsb_decoding for soundscout
+===
+Run Make to build dump1090, an ADS-B receiver for RTL-SDR
+boards. 
+
+Then run report_planes.py to run dump1090 in a loop, reporting
+the results to Exosite.
+
+Not tested on the Pi yet. 
+
+
+
 Dump1090 README
 ===
 
