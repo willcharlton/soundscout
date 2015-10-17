@@ -99,7 +99,7 @@ def record():
     rec = Recorder(channels=1)
     with rec.open('tempfile.wav', 'wb') as recfile2:
         recfile2.start_recording()
-        time.sleep(3.0)
+        time.sleep(10.0)
         recfile2.stop_recording()
 
 if __name__ == '__main__':
