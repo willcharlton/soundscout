@@ -24,7 +24,7 @@ class Recorder(object):
     Records in mono by default.
     '''
 
-    def __init__(self, channels=1, rate=44100, frames_per_buffer=1024):
+    def __init__(self, channels=1, rate=22500, frames_per_buffer=1024):
         self.channels = channels
         self.rate = rate
         self.frames_per_buffer = frames_per_buffer
@@ -95,6 +95,13 @@ class RecordingFile(object):
         wavefile.setframerate(self.rate)
         return wavefile
 
+def record():
+    rec = Recorder(channels=1)
+    with rec.open('tempfile.wav', 'wb') as recfile2:
+        recfile2.start_recording()
+        time.sleep(3.0)
+        recfile2.stop_recording()
+
 if __name__ == '__main__':
     # Blocking mode
     #rec = Recorder(channels=1)
@@ -102,8 +109,9 @@ if __name__ == '__main__':
     #    recfile.record(duration=20.0)
 
     # Non-blocking mode (start and stop recording):
-    rec = Recorder(channels=1)
-    with rec.open('nonblocking.wav', 'wb') as recfile2:
-        recfile2.start_recording()
-        time.sleep(20.0)
-        recfile2.stop_recording()
+    while True:
+       rec = Recorder(channels=1)
+       with rec.open('tempfile.wav', 'wb') as recfile2:
+          recfile2.start_recording()
+          time.sleep(3.0)
+          recfile2.stop_recording()
