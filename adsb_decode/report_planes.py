@@ -25,7 +25,7 @@ def correlate_planes(planes):
          myreader = csv.reader(csvfile, delimiter=',', quotechar='"')
          for row in myreader: 
             if row[0].upper()==plane.upper():
-               out+=[row[7]+" "+row[6]]
+               out+=[row[1] + ": " +row[7]+" "+row[6]]
    return out
 
 def upload_planes(planes):
