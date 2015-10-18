@@ -33,14 +33,9 @@ $(document).ready(function() {
 			fillColor: '#f03',
 			fillOpacity: 0.5
 		}).addTo(map);
-		
+		circle.bindPopup( "{{ data_rows[row][0][1] | unjson_raw }}" );
 		console.log("will", {{data_rows[row][0][1] | gps | safe}})
 	{% endfor %}
-	L.circle([44.98014269999999,-93.28874739999999], 500, {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5
-	}).addTo(map);
 });
 
 </script>
