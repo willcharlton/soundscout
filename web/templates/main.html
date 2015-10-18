@@ -10,6 +10,7 @@
 	<table class="table">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width", initial-scale=1">
+        <h1>Recent noise incidents</h1>
 	<thead> <tr class="info"><th>Device</th><th>N</th><th>N-1</th><th>N-2</th><th>N-3</th><th>N-4</th></thead>
 	{% for row in data_rows %}
 	
@@ -39,6 +40,9 @@
 
 	{% endfor %}
 	</table>
+        <h1>Recent radio incidents</h1>
+        <table class="table">
+        <tr><td class="success">{{ radio_data | unjson_radio_data }}</td></tr></table>
 </div>
 </body>
 </html>
