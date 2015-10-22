@@ -10,7 +10,10 @@ mkvirtualenv ssw --python=`which python2.7`
 pip install -r requirements.txt
 ```
 ## Run the web app
+
+```
 ./ssweb.py
+```
 
 ## View the data
 [localhost](https://127.0.0.1:5000)
